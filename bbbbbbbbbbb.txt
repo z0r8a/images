@@ -1,0 +1,356 @@
+7.11 Implement disaster recovery (DR) processes
+
+7.11.1 BCM, BCP, and DRP
+
+CORE CONCEPTS
+
+A disaster is something that interrupts normal business operations BCM is the process and function by which an organization is responsible for creating, maintaining, and testing BCP and DRP plans BCP focuses on survival of the business processes when something unexpected impacts it
+
+DRP focuses on the recovery of vital technology infrastructure and systems
+
+BCP vs. DRP
+
+Understanding MTD, RTO, RPO, WRT
+
+The processes described in this topic all help mitigate the effects of a disaster, preserving as much value as possible. Business Continuity Management (BCM), Business Continuity Planning (BCP), and Disaster Recovery Planning (DRP) are ultimately used to achieve the same goal--continuity of the business and its critical and essential functions, processes, services, and so on.
+
+A disaster is defined as a sudden, unplanned event that brings about great damage or loss. In a business environment, it is any event that creates an inability on an organization’s part to support critical business functions for some predetermined period of time.
+
+Simply put, a disaster is something that interrupts critical and essential business processes. Related terms, like BCM, BCP and DRP, are all listed in Table 7-18.
+
+BCM creates the structure necessary for BCP and DRP. Where BCP is primarily concerned with the components of the business that are truly critical and essential, DRP is primarily concerned with the technological components that support critical and essential business functions. BCP focuses on the processes; DRP focuses on the systems. One important thing to note is that not all business functions are critical or essential, and this should become very clear during the BCP process. Also, even when experiencing a disaster, an organization must still adhere to laws, regulations, privacy requirements, and so on.
+
+Business Continuity Management (BCM)The business function and processes that provide the structure, policies, procedures, and systems to enable the creation and maintenance of BCP and DRP plans.
+
+Business Continuity Planning (BCP) Disaster Recovery Planning (DRP)
+
+Focuses on survival of the business and the capability for an effective response; strategic Focuses on the recovery of vital technology infrastructure and systems; tactical
+
+Table 7-18: BCM, BCP, and DRP
+
+Steps in the BCP/DRP process
+
+BCP is all about being able to continue performing work and delivering services at an acceptable level (often tied in with specific SLAs) after an impacting incident takes place at an organization. DRP aims at documenting a specific set of activities that will need to take place so an organization is able to recover from an incident and resume normal operations. It ultimately aims at allowing the organization to return to what is known as a Business As Usual (BAU) state of operation. The key BCP/DRP steps are included in Table 7-19.
+
+1. Develop
+
+Contingency
+
+Planning Policy
+
+This is a formal policy that provides the authority and guidance necessary to develop an effective contingency plan.
+
+2. Conduct BIA
+
+Conduct the business impact analysis, which helps identify and prioritize information systems and components critical to supporting the organization’s mission/business processes.
+
+3. Identify controls Measures taken to reduce the effects of system disruptions can
+
+increase system availability and reduce contingency life cycle costs.
+
+4. Create contingency strategies
+
+Thorough recovery strategies ensure that the system may be recovered quickly and effectively following a disruption.
+
+5. Develop contingency plan
+
+Develop an information system contingency plan.
+
+6. Ensure testing, training, and exercises
+
+Thoroughly plan testing, training, and exercises. Testing validates recovery capabilities, whereas training prepares recovery personnel for plan activation, and exercising the plan identifies gaps.
+
+7. Maintenance Ensure plan maintenance takes place. The plan should be a living document that is updated regularly to remain current with system enhancements and organizational changes.
+
+Table 7-19: BCP/DRP Steps
+
+In addition to internal processes, assets, functions and systems, serious consideration must be given to external dependencies and how they could be impacted during a disaster. As an example, let’s say we run a data center and our goal is to maintain one week of uptime, even if the power goes down. In order to accomplish this goal, we would need sufficient generator capacity and fuel. However, fuel can be costly to store, so we decide to only store enough fuel for 48 hours of generator operation. We could schedule fuel deliveries to bring in gas to cover the rest of the week. In this example, the fuel delivery company would be an external dependency. We would need to consider strategies to ensure that we can rely on this company when a disaster strikes. If there is a powerful hurricane or other disaster, will the company still be able to make its deliveries? Or should we consider backup options, like organizing an out-of-state supplier? External dependencies can go far beyond just fuel suppliers. Any external organization, individual, or service can be an external dependency, and organizations need to consider these as part of their BCP.
+
+7.11.2 RPO, RTO, WRT, and MTD
+
+CORE CONCEPTS
+
+RPO, RTO, WRT, and MTD/MAD are all measurements of time.
+
+RPO = max tolerable data loss measured in time.
+
+RTO = max tolerable time to recover systems to a defined service level.
+
+WRT = max tolerable time to verify system and data integrity as part of resumption of normal ops
+
+MTD/MAD = max time critical system, function, or process can be disrupted before unacceptable/irrecoverable consequences to business.
+
+When dealing with BCP and DRP procedures, there are four key measurements of time to be aware of.
+
+Those are: Maximum Tolerable Downtime (MTD)/Maximum Allowable Downtime (MAD)
+
+Refers to the maximum amount of time that an organization’s critical process or processes can be impacted. MTD is sometimes referred to as maximum allowable downtime (MAD) or acceptable interruption window (AIW). If the MTD is reached or exceeded, the ongoing viability of the organization can be called into question, and in fact, the organization may have reached its end and will cease to operate. MTD is often considered relative to the recovery time objective (RTO). As a golden rule, the RTO should never exceed the MTD. In other words, MTD > RTO, or RTO < MTD should always be true.Using a bank as an example, MTD measures how long their systems can be down before they’re no longer in business. If the core banking systems go down and no one can access their money for any significant amount of time, the bank is likely to lose the trust of their clientele and go out of business. A bank’s MTD is likely a matter of minutes.
+
+Recovery Time Objective (RTO)
+
+Refers to the amount of time expected to restore services or operations to a defined service level in a recovery environment. For example, if a defined and reasonable service level during a period of disruption is 75 percent and it takes four hours to reach that percentage, the RTO is four hours. RTO is a component of MTD.
+
+In the previously mentioned example, if the bank had a backup data center in a different city, the RTO might be a measure of how long it would take to get that backup data center up and running.
+
+Definitions of RPO, RTO, WRT, and MTD
+
+Cost implications of RPO and RTO
+
+MTD = RTO + WRT
+
+Recovery Point Objective (RPO)
+
+Refers to the maximum amount of data that can be lost in terms of time. In other words, how much data is the organization willing to lose as a measurement of time: ten seconds worth of data, ten minutes, fifteen hours, two days, etc. The less data the organization is willing to lose, the more expensive the backup solution will need to be. If the organization is willing to lose up to twenty-four hours’ worth of data, then a nightly backup is probably sufficient, but if the organization is only willing to lose a few seconds worth of data, then much more complicated and expensive solutions, like stream backups and/or replication, will be required.
+
+For example, in the event of a massive earthquake, a bank would lose all of the information that wasn’t backed up at the time of the disaster. If their maximum tolerable data loss was twenty-four hours, then a significant number of financial transactions would disappear, and the disaster would severely impact their reputation as well. As a result, banks usually have a much shorter RPO.
+
+Work Recovery Time (WRT)
+
+This is the time needed to verify the integrity of systems and data as they’re being brought back online.
+
+Just bringing systems back online is not enough to ensure the viability and continuity of operations in an organization. There needs to be assurance that the systems are functioning properly. The WRT represents the time needed to perform this step, and it is also a component of MTD.In order to get back to business as usual (BAU), the bank would need the information from that data
+
+center transferred to the original location. WRT would be the measure of how long it takes to ensure that the bank can return to conducting their day-to-day operations.
+
+Figure 7-18 helps visualize how these measurements of time all fit together, while Table 7-20 provides their definitions. The horizontal axis is time, starting with business as usual, and then kaboom! Some sort of disaster occurs. The first measurement of time we can now look at is RPO, the maximum amount of data loss as a measurement of time. After the disaster has occurred, the next measurement of time is the RTO, the maximum amount of time to restore processes/systems to a defined service level.
+
+WRT is then the time required to validate systems as they are fully brought back online and return to business as usual. Finally, the MTD is the maximum amount of time processes/systems can be down before the business ceases to be a business. MTD is the most important measurement of time to consider when making the decision to declare a disaster.
+
+Figure 7-18: MTD, RPO, RTO, and WRT Relationships RPO
+
+Recovery Point Objective: Maximum tolerable data loss RTO
+
+Recovery Time Objective: Recovery time to defined service level WRT
+
+Work Recovery Time: Maximum time to verify integrity of systems and data MTD Maximum Tolerable Downtime: Maximum total time that a process can be disrupted
+
+Table 7-20: RPO, RTO, WRT, and MTD Definitions
+
+How to reduce the cost of BCP and DRP plans When considering the cost related to implementing BCP and DRP plans, the more quickly a given process/function/system needs to be recovered, the more expensive the solution. In other words, the shorter the RPO and RTO requirements, the more significant the cost becomes. To extrapolate further, in order for an organization to make its BCP/DRP plan as cost efficient as possible, one of the goals should be to increase the RPO (more data can afford to be lost) and RTO (the time to recover can take longer) as much as it can tolerate within the acceptable bounds.
+
+Lower RPO/RTO = more expensive Higher RPO/RTO = less expensive
+
+7.11.3 Business Impact Analysis (BIA)
+
+CORE CONCEPTS
+
+BIA process identifies: the most critical/essential business functions, processes, and systems potential impacts of an interruption as a result of disaster the key measurements of time (RPO, RTO, WRT, and MTD) for each critical function, processes, and systems
+
+Purpose of the BIA process
+
+Steps in the BIA process
+
+The Business Impact Assessment (BIA) is the most important step in Business Continuity Planning. Its purpose is to predict the consequences of a disaster or a disruption to business processes and functions and then identify them as time parameters for the whole purpose of gathering information to develop recovery strategies for each critical and essential function and process. The output of a BIA are key measurements of time: RPO, RTO, WRT, and MTD.
+
+The purpose of the BIA is to identify and prioritize system components by correlating them to the mission/business processes the system supports and then to use this information to characterize the impact on the processes if the system was unavailable. In the event of a disaster, having conducted a BIA ensures that security will make the right decisions about what assets to focus on and will choose the right resources for prioritization of their recovery efforts.
+
+The BIA Process
+
+Since many of the key systems in an organization are interdependent, creating the BIA is not a simple and quick process, and in some organizations it can take months to complete. Each critical businessprocess and system will have its own RPO, RTO, WRT, and MTD measurements.
+
+Identifying and assigning values to an organization’s most critical and essential functions and assets is the first step in determining what processes to prioritize in an organization’s recovery efforts. Financial records, workshops, questionnaires, interviews, and observation are typically used to determine and assign values, using quantitative and qualitative methods. A crucial part in this process is involving staff from the various company functions so input can be provided about critical systems and services to allow reaching the right decisions. Making these determinations is an iterative and team-oriented effort.
+
+Once asset values are determined, priorities can be set, and processes to protect the most important assets can be identified. Table 7-21 denotes the steps included in the BIA process.
+
+1. Determine mission/business processes and recovery criticality
+
+Business processes are identified, and the impact of disruption is determined, along with outage impacts and estimated downtime. The downtime should reflect the maximum that an organization can tolerate while still able to achieve the corporate mission. This downtime is reflected in the time-centric metrics discussed earlier: RPO, RTO, WRT, and MTD.
+
+2. Identify resource requirements
+
+Realistic recovery efforts require a thorough evaluation of the resources required to resume critical business processes and related interdependencies. Examples of critical resources may include business processes, facilities, personnel, equipment, software, data, and systems.
+
+3. Identify recovery priorities for system resources
+
+Based upon the results from the previous activities, system resources can be linked to critical business processes. Priority levels can be established for sequencing recovery activities and resources, typically by creating dependency.
+
+Table 7-21: BIA Steps
+
+7.11.4 Disaster Response Process
+
+CORE CONCEPTS
+
+A disaster should be declared when maximum tolerable downtime (MTD) is going to be exceeded.
+
+Disaster response should include all personnel and resources necessary to quickly respond to the situation and restore normal operations.
+
+Disaster response team personnel should include stakeholders from throughout the organization.Disaster communications is critical and should include all relevant stakeholders.
+
+Understand the role maximum tolerable downtime (MTD) plays in the declaration of a disaster
+
+As discussed, a disaster is something that interrupts normal business operations. Prior to a disaster being declared however, the incident response process should be followed. As review, the incident response process focuses on ongoing monitoring of events and determining which events are in fact incidents. Once an incident is identified, an assessment of its severity must be made. Is the data center in flames, or did a hard drive in one of the servers fail? During the assessment of an incident, one specific variable should be carefully considered--MTD, also known as Maximum Tolerable Downtime.
+
+MTD is the maximum amount of time that a business can sustain a loss of key functionality and remain viable. So, as part of the incident impact assessment, if it’s clear that the MTD will be exceeded, a disaster should be declared and the disaster recovery plan immediately initiated. If the data center is burning and the MTD is four hours, will incident response activities have everything back to normal in less than four hours? No, so the DRP should be activated, which will enable the business to remain viable by bringing a hot, mobile, or redundant site online.
+
+Declaring a Disaster
+
+Understand what constitutes a disaster
+
+In the same vein used to discern an incident from an event, determining what is a disaster relative to an incident requires an understanding of what assets might be involved, how operations and processes might be impacted, and other factors that ultimately point to the risk to value and ongoing viability of an organization. The declaration of a disaster and therefore the activation of a business continuity plan needs to be done by an authoritative entity such as the CEO or a Business Continuity Board or Committee.
+
+Assessment
+
+As noted above, prior to a disaster being declared, the incident response process should be followed.
+
+Once an incident is identified, an assessment of its severity must be made. During the assessment of an incident, one specific variable should be carefully considered--MTD, also known as maximum tolerable downtime. If the MTD is going to be exceeded, a disaster should be declared, and the response process and response team should be activated. At this point, the response team will help manage an organization through the disaster until it is resolved. Through DR tests held as part of building a DRP, the response team should be able to quickly respond to the situation at hand and take all necessary steps to restore business operations to normal.
+
+Personnel The trained team--the emergency response team--should consist of stakeholders from throughout the organization. Examples might include personnel representing the following functional areas:
+
+Executive/senior management Legal HR
+
+IT PR Security
+
+Training and Awareness
+
+Success in any endeavor typically involves significant preparation and training, and this is certainly true where the disaster recovery process is concerned. As will be discussed in more detail later in this section, disaster recovery plans should be tested often--at least annually--to best familiarize staff members and members of the emergency response team with the proper steps to follow in the event of a disaster.
+
+Lessons Learned
+
+After a disaster has been handled and operations restored to normal, a review of everything that took place should be conducted. This “lessons learned” exercise should focus on every facet of a BCM and especially on the DRP to determine what worked well, what needs to be improved, and what needs to be added or eliminated from the plan. As planning goes, including a “lessons learned” element could prove to be invaluable for the sake of an organization’s long-term success and viability.
+
+Communications
+
+As noted among the specific response components, when a disaster is occurring, communication is of critical importance and should include all relevant stakeholders, which can be a very large group of people.
+
+Relevant stakeholders include people internal to the organization as well as people external to the organization.
+
+Internal: In the event of a disaster, internal communications are critical. Internal stakeholders could include senior management, Board members, business owners, legal, HR, and media and communications team members, among others.
+
+External: Equally critical in the event of a disaster is external communications. External stakeholders could include regulators, law enforcement, customers, the media, and others.
+
+7.11.5 Restoration Order
+
+CORE CONCEPTS
+
+The BIA determines restoration order when recovering systems--the most important and critical should be recovered first.
+
+Dependency charts and mapping can help inform system restoration order.
+
+After declaring a disaster, the most critical systems should be brought online at a recovery site.
+
+When restoring systems/operations to the primary site, the least critical systems should be restored first, in order make sure the site is working properly.
+
+How is the order determined for restoring systems?
+
+Understand how a dependency chart informs restoration order of systems/applications
+
+With multiple systems and accompanying DR plans that make up the overall plan, how is the order of system recovery determined? Which systems are brought back first? Knowing that recovery resources are limited, the BIA helps determine which systems receive priority. The most critical systems, based upon the goals and objectives of the organization, should always be recovered first.
+
+Dependency Charts
+
+Another way to determine system/application restoration order is using dependency charts. For example, let’s imagine we want to bring the primary website back online. Is this as simple as turning on the web server and then the site is up? No, because the web server might be part of a more complex architecture that includes a load balancer, a database server, and a cluster of web servers. So, to bring the website back up, each underlying component would first need to be online and available.
+
+Dependency charts, like the one shown in Figure 7-19, can map out exactly what components are required and even their initiation order.Figure 7-19: Restoration Order Determination
+
+Understand the order when moving systems/operations to/from a DR site
+
+What systems/operations should be moved first to the DR site?
+
+After declaring a disaster, the first order of business should always be to get the most critical processes and elements of the business up and running at the recovery site.Once the primary site is fixed, what systems/operations should be moved back first?
+
+As time progresses, and the primary site is rebuilt and ready to once again host business operations, the processes and systems that should be restored first are the least critical. Why is this the case?
+
+In essence, because the primary site is essentially new, it makes more sense to restore less critical processes and systems first to make sure the new site is working as expected. Once any kinks or issues are resolved, then the most critical processes and systems can be restored.
+
+7.12 Test disaster recovery plans (DRP)
+
+7.12.1 BCP and DRP Testing
+
+CORE CONCEPTS
+
+DRP testing is a critical component of plan creation and development.
+
+DRP tests include: read-through/checklist, walkthrough, simulation, parallel, full-interruption/full-scale.
+
+A full-interruption test should only be performed after management approval has been obtained and other tests have been successful.
+
+Know the order of DRP testing and which test is least/most impactful
+
+After recovery plans have been created, it’s imperative to test them. Tests can range from simple to complex, and each type is valuable.
+
+The first type of test is the easiest and is known as a read-through test. This test simply ensures that the major components of the DRP are included, including first steps, accurate contact lists, and so on.
+
+Are all of the major pieces of information included in the plan?
+
+The next test is what’s known as a walkthrough test. The thinking behind a walkthrough is that all of the key stakeholders convene in a conference room and walk through the plan. Key stakeholders could include business owners, IT staff, senior management, legal, and so on. Each person receives a copy of the plan, and everybody walks through it together, thereby allowing problems and holes to be identified, so improvements can be made. The entire exercise is paper-based, but the outcome often proves very valuable.
+
+A simulation test follows, and it too is paper-based. Key stakeholders are once again brought together, but this time a facilitator is also included for purposes of moderating a scenario that requires thestakeholders to respond according to what’s happening. For example, the facilitator might present a scenario that includes a major fire at a production facility or a dangerous virus outbreak. Once the scenario is presented, the stakeholders must use the DRP to help guide their response. At the same time, the facilitator can continue to throw curveballs at the situation, which requires the stakeholders to think quickly and respond accordingly.
+
+It’s important to reiterate at this point that these tests are not an “IT-only business .” Whether reviewing BCPs or DRPs, all relevant stakeholders should be at the table and part of the process.
+
+Up to this point, all of the tests have been paper-based exercises. The following section describes tests that include working with systems.
+
+The first is known as a parallel test. It’s very similar to a simulation test, but in this case the scenario is responded to with people located where they’d be if it was an actual situation. People would touch systems, but only backup systems, not anything in production. This is why it’s known as a parallel test --people are only working with systems parallel to production systems.
+
+The last test is what’s known as a full-interruption or full-scale test. With this test, backup and production, or primary, systems are used to respond to the scenario. That is a very important point-- with a full-scale test, production systems will be impacted.
+
+Based upon the descriptions above, it’s clear that the riskiest type of test--full-scale--is also the best type of test for confirming whether a DRP is going to work. Otherwise, there’s really no way to know for sure how the plan, including the response of personnel, is going to function. As risky as they can be, full-scale interruption tests will often reveal the tiniest of holes in a plan and therefore are extremely valuable.
+
+When should a full-scale, full-interruption test be conducted? Only after every other test has been successfully conducted and with management’s approval should a full-interruption test be conducted.
+
+Because a full-interruption test can potentially take production systems down, it’s important that senior management be aware of and approve the possibility of this happening. Table 7-22 contains a summary of all prementioned DRP test types.
+
+Type Description
+
+Affects backup / parallel systems
+
+Affects production systems
+
+Readthrough/Checklist
+
+Author reviews DR plan against standard checklist for missing components/completeness
+
+Walkthrough Relevant stakeholders walk through the plan and provide theirinput based on their expertise
+
+Simulation Follow a plan based on a simulated disaster scenario.
+
+Stop short of affecting systems or data.
+
+Parallel Test DR plan at recovery site/on parallel systems
+
+Fullinterruption/Fullscale
+
+Cause an actual disaster and follow DR plan to restore systems and data
+
+Table 7-22: DRP Test Types
+
+7.13 Participate in business continuity (BC) planning and exercises
+
+7.13.1 Goals of Business Continuity Management (BCM)
+
+CORE CONCEPTS
+
+BCP and DRP = Business Continuity Management (BCM).
+
+BCM includes three primary goals: safety of people, minimization of damage, survival of business.
+
+The number one goal of BCM is safety of people.
+
+Understand the three goals of business continuity management (BCM) The goals of business continuity management (BCM), which is the overall BCP and DRP process, are simple, yet important. BCM includes three primary goals:
+
+1. Safety of people
+
+2. Minimization of damage
+
+3. Survival of businessUnderstand the number one goal of BCM
+
+The number one goal of any component of BCM is safety of people. Next, the second goal is minimizing damage to facilities and the business. Finally, the third goal is ensuring the survival of the business. Within all of these goals, BCM should focus on the most critical and essential functions of the business.
+
+In addition to the material covered in this domain, the ISC2 Official Exam Outline lists:
+
+7.14 Implement and manage physical security
+
+Perimeter security controls Internal security controls All physical security concepts, including the specific bullet points noted above, have been covered in Domain 3.
+
+7.15 Address personnel safety and security
+
+concerns
+
+As already noted, safety of humans should be the paramount consideration within any organization’s security plan. Security training and awareness programs, emergency response and management training, and physical security and access controls all help in this regard.
+
+However, two additional subjects related to this topic also need to be touched upon: Travel Duress Oftentimes employees must travel for work, and sometimes this may include visits to less safe or stable parts of the world. Even though an employee may not be physically present on a corporate campus, the organization is still responsible for ensuring the employee’s safety, which might include providing additional medical coverage, travel and health insurance, and an action plan in the event of an emergency. In fact, due to the continued rise in global travel and associated security-related complexities, many organizations--especially large multinational corporations--outsource the travel logistics to companies like International SOS. International SOS acts as a single point of contact and helps design and implement integrated health and security policies and procedures that give access to 24/7 global health, security, travel, and emergency assistance to corporate subscribers.
+
+Along with an understanding of travel-related considerations, security professionals should have a basic understanding of how to handle situations that involve employees under duress. Duress is defined as “threats, violence, constraints, or other action brought to bear on someone to do something against their will or better judgment.” An example of duress is being held at gunpoint and forced to withdraw money from an ATM, or being threatened with violence unless some type of illegal action is taken.
+
+Regardless of the cause of duress, employees should be trained in how to respond in a pressured situation. Depending upon the context, this training might involve the use of code words to alert coworkers of a need for assistance, or perhaps it could involve pressing a silent alarm button that alerts security and other personnel. Most importantly, e
+
